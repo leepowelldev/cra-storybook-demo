@@ -5,6 +5,7 @@ import {
   tags,
   types,
 } from './components/button-complex';
+import { List } from './components/List/List';
 // import { Button, variants, icons, tags, types } from "./button-infer";
 // import { Button, variants, icons, tags, types } from "./button-simple";
 

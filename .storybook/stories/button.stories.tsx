@@ -9,26 +9,15 @@ import { Meta } from '@storybook/react';
 const _default: Meta = {
   title: 'Button',
   component: Component,
-};
-
-const Button = (props: Props) => {
-  return <Component {...props}>{JSON.stringify(props)}</Component>;
-};
-
-Button.args = { children: 'Click me!' };
-
-Button.argTypes = {
-  children: {
-    control: {
-      type: 'text',
+  argTypes: {
+    children: {
+      control: null,
     },
   },
-  icon: {
-    control: {
-      type: 'select',
-      options: { none: undefined, ...icons },
-    },
-  },
+};
+
+const Button = ({ children, ...rest }: Props) => {
+  return <Component {...rest}>Click me</Component>;
 };
 
 export default _default;

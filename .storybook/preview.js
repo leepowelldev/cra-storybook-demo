@@ -15,14 +15,15 @@ export const parameters = {
       disable: true,
     },
   },
-  docs: {
-    page: () => (
-      <>
-        <Title />
-        <Subtitle />
-        <Description />
-        <ArgsTable />
-      </>
-    ),
-  },
+  // docs: {
+  //   page: () => (
+  //     <>
+  //       <Title />
+  //       <Subtitle />
+  //       <Description />
+  //       <Primary />
+  //       <ArgsTable />
+  //     </>
+  //   ),
+  // },
 };

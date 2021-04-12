@@ -1,34 +1,28 @@
-// import {
-//   ReactComponentElement,
-//   ReactElement,
-//   ElementType,
-//   JSXElementConstructor,
-// } from 'react';
+import { node, oneOf, shape, string, bool } from 'prop-types';
+import { HTMLAttributes } from 'react';
 
-// type TestChildrenProps = {
-//   foo: number;
+type A = { a: string };
+type B = { b: boolean };
+
+interface Props extends HTMLAttributes<HTMLDivElement> {
+  children: string;
+  title: string;
+  foo?: A | B;
+}
+
+const Test = ({ children, title, foo, ...rest }: Props) => (
+  <div {...rest}>
+    <h2>{title}</h2>
+    {children}
+  </div>
+);
+
+Test.displayName = 'Test';
+
+// Test.propTypes = {
+//   children: node.isRequired,
+//   title: string.isRequired,
+//   foo: oneOf([shape({ a: string }), shape({ b: bool })]),
 // };
 
-// const TestChildren = (props: TestChildrenProps) => <div>{props.foo}</div>;
-
-// type TestChildrenType = typeof TestChildren;
-
-// type Props = {
-//   children:
-//     | JSX.ElementClass<TestChildrenType>
-//     | ReactElement<TestChildrenType>[];
-// };
-
-// const Test = (props: Props) => {
-//   return null;
-// };
-
-// const Y = (
-//   <Test>
-//     <TestChildren foo={2} />
-//     <TestChildren foo={2} />
-//     <div>sdf</div>
-//   </Test>
-// );
-
-// export { Test, TestChildren };
+export { Test };

@@ -1,3 +1,5 @@
+import { childrenOfType } from 'airbnb-prop-types';
+import { string } from 'prop-types';
 import React, {
   useState,
   ReactNode,
@@ -6,12 +8,13 @@ import React, {
   useEffect,
 } from 'react';
 import { ListContext } from './ListContext';
+import { Item } from './Item';
 
 type Props = {
-  children?: ReactNode;
+  children: ReactNode;
 };
 
-const List: React.FC<Props> = ({ children }) => {
+const List = ({ children }: Props) => {
   const [state, setState] = useState<Function[]>([]);
 
   const register = useCallback((cb: Function) => {
@@ -34,14 +37,20 @@ const List: React.FC<Props> = ({ children }) => {
     state.forEach((cb, index) => cb(index));
   });
 
-  console.log(React.Children.toArray(children));
-
   return (
     <ListContext.Provider value={value}>
-      <div>Total: {state.length}</div>
       <ul>{children}</ul>
     </ListContext.Provider>
   );
 };
+
+List.propTypes = {
+  children: childrenOfType(Item).isRequired,
+  foo: string.isRequired,
+};
+
+List.displayName = 'List';
+
+List.Item = Item;
 
 export { List };
